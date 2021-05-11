@@ -14,6 +14,7 @@ function App() {
 		} else return 0;
 	};
 
+	// convert amount to dollar value
 	const formatter = new Intl.NumberFormat('en-US', {
 		style: 'currency',
 		currency: 'USD'
@@ -21,6 +22,7 @@ function App() {
 
 	return (
 		<div className='App'>
+			<h1>Customer Transactions</h1>
 			<Table striped bordered hover>
 				<thead>
 					<tr>
@@ -33,7 +35,7 @@ function App() {
 				<tbody>
 					{custData.map(customer => {
 						return (
-							<tr key={customer.id}>
+							<tr key={customer.transId}>
 								<td>{customer.name}</td>
 								<td>{customer.date}</td>
 								<td>{formatter.format(customer.amount)}</td>
@@ -42,6 +44,16 @@ function App() {
 						);
 					})}
 				</tbody>
+			</Table>
+			<h1>Total Rewards Points</h1>
+			<Table striped bordered hover>
+				<thead>
+					<tr>
+						<th>Customer</th>
+						<th>Total Points</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
 			</Table>
 		</div>
 	);
