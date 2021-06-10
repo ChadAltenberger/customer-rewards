@@ -53,7 +53,21 @@ function App() {
 						<th>Total Points</th>
 					</tr>
 				</thead>
-				<tbody></tbody>
+				<tbody>
+					{custData.map(customer => {
+						if (customer.name === 'Screech') {
+							let total = 0;
+							let count = calculatePoints(customer.amount);
+							total += count;
+							return (
+								<tr key={customer.transId}>
+									<td>{customer.name}</td>
+									<td>{calculatePoints(customer.amount)}</td>
+								</tr>
+							);
+						}
+					})}
+				</tbody>
 			</Table>
 		</div>
 	);
